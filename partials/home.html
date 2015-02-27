@@ -2,3 +2,36 @@
   <h1>Newspaper Manager</h1>
   <h2>Keep your reporters on the beat</h2>
 </div>
+
+<div class="col-md-6 offset-1">
+  <h3>Add a new beat for your reporters to cover</h3>
+  <form ng-submit="BeatsFactory.addBeat()" role="form">
+    <div class="form-group">
+      <input type="text" ng-model="BeatsFactory.beatTitle" class="form-control" placeholder="What is the new beat called?">
+    </div>
+    <div class="form-group">
+      <select ng-model="BeatsFactory.beatSection" name="beatSection" class="form-control" required>
+        <option value="">What section of the news does this beat belong to?</option>
+        <option value="Frontpage">Frontpage</option>
+        <option value="Local">Local</option>
+        <option value="Sports">Sports</option>
+        <option value="Business">Business</option>
+        <option value="International">International</option>>
+        <option value="Food">Food</option>
+        <option value="Entertainment">Entertainment</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-info">Add Beat</button>
+  </form>
+</div>
+
+<div class="col-md-4" ng-show="beats.length">
+  <h3>Beats Currently Covered</h3>
+  <p>Click to see which reporters are assigned to them.</p>
+  <ul>
+    <li ng-repeat="item in beats">
+      <h4 class="title"><a ui-sref="beats.reporters({ beatId: item.id })"{{ item.title }}</h4>
+      <p>Section: {{ item.section }}</p>
+    </li>
+  </ul>
+</div>
