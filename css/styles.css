@@ -1,3 +1,9 @@
 .title {
   text-transform: capitalize;
 }
+
+.name {
+  text-transform: capitalize;
+  color: blue;
+  cursor: pointer;
+}
