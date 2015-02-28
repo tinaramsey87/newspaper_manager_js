@@ -7,3 +7,22 @@
   color: blue;
   cursor: pointer;
 }
+
+.beat-form {
+  margin-bottom: 10px;
+}
+
+.form-control {
+  min-width: 300px;
+  max-width: 400px;
+  margin-top: 5px;
+}
+
+
+.button {
+  margin-top: 10px;
+}
+
+.jumbotron h1, h2 {
+  margin-left: 50px;
+}

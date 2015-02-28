@@ -1,6 +1,6 @@
-<div class="col-md-6 offset-1" ng-hide="reporters">
+<div class="col-md-6" ng-hide="reporters">
   <h3>Add a new beat for your reporters to cover</h3>
-  <form ng-submit="BeatsFactory.addBeat()" role="form">
+  <form ng-submit="BeatsFactory.addBeat()" role="form" class="beat-form">
     <div class="form-group">
       <input type="text" ng-model="BeatsFactory.beatTitle" class="form-control" placeholder="What is the new beat called?">
     </div>
@@ -20,23 +20,28 @@
     <button type="submit" class="btn btn-info">Add Beat</button>
   </form>
 </div>
-<div ui-view class="col-md-6 offset-1"> </div>
 
-<div class="col-md-4 panel panel-default" ng-show="beats.length">
-  <div class="panel-body">
-    <h3>Beats Currently Covered</h3>
-    <p>Click to see which reporters are assigned to them.</p>
-    <ul>
-      <li ng-repeat="item in filtered = (beats | filter:query | orderBy:beats.predicate)">
-        <h4 class="title"><a ui-sref="beats.reporters({ beatId: item.id })" ng-click="reporters = true">{{ item.title }}</a></h4>
-        <p>Section: {{ item.section }}</p>
-      </li>
-    </ul>
-    <h3>Search beats</h3>
-    <form class="form-inline" role="form">
-      <div class="form-group">
-        <input ng-model="query" type="text" class="form-control" placeholder="Search">
-      </div>
-    </form>
+<div class="col-md-4">
+  <div class="panel panel-info" ng-show="beats.length">
+    <div class="panel-heading">
+      <h3>Beats Currently Covered</h3>
+      <p>Click to see which reporters are assigned to them.</p>
+    </div>
+      <div class="panel-body">
+        <ul>
+          <li ng-repeat="item in filtered = (beats | filter:query | orderBy:beats.predicate)">
+            <h4 class="title"><span ng-click="reporters = !reporters"><a ui-sref="beats.reporters({ beatId: item.id })">{{ item.title }}</a></span></h4>
+            <p>Section: {{ item.section }}</p>
+          </li>
+        </ul>
+        <h3>Search beats</h3>
+        <form class="form-inline" role="form">
+          <div class="search-group">
+            <input ng-model="query" type="text" class="form-control" placeholder="Search">
+          </div>
+        </form>
+    </div>
   </div>
 </div>
+
+<div ui-view class="col-md-6"></div>
